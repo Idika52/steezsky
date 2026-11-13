@@ -3,723 +3,245 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fffaf5" />
     <title>SteezSky | Digital Products for Better Living</title>
-    <meta
-      name="description"
-      content="SteezSky offers clean digital products, planners, productivity systems, and business templates designed to help you stay organized and level up your lifestyle."
-    />
-    <meta
-      name="keywords"
-      content="SteezSky, digital products, planner, Notion templates, productivity, small business tools"
-    />
+    <meta name="description" content="Shop clean digital products, planners, productivity systems, and business templates from SteezSky." />
     <style>
       :root {
-        --bg: #fffaf5;
-        --bg-soft: #f6ebdf;
-        --card: #ffffff;
-        --ink: #211611;
-        --muted: #5d4a3f;
-        --line: #ead9ca;
-        --rose: #f9d6cf;
-        --rose-deep: #e9a5a0;
-        --peach: #ffd7b5;
-        --gold: #f0b86d;
-        --olive: #8d9a77;
-        --dark: #1d1412;
-        --shadow: 0 18px 48px rgba(33, 22, 17, 0.09);
-        --radius: 24px;
+        --bg: #fffaf5; --bg-soft: #f6ebdf; --card: #fff; --ink: #211611;
+        --muted: #5d4a3f; --line: #ead9ca; --rose: #f9d6cf; --rose-deep: #e9a5a0;
+        --peach: #ffd7b5; --gold: #f0b86d; --olive: #8d9a77; --dark: #1d1412;
+        --shadow: 0 18px 48px rgba(33, 22, 17, .09); --radius: 24px;
       }
-
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
-      body {
-        font-family: Inter, "Segoe UI", Arial, sans-serif;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.6;
-      }
+      body { font-family: Inter, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+      body.cart-open { overflow: hidden; }
       img { max-width: 100%; display: block; }
       a { color: inherit; text-decoration: none; }
-      ul { list-style: none; }
-
-      .container {
-        width: min(1180px, calc(100% - 32px));
-        margin: 0 auto;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 52px;
-        padding: 0 24px;
-        border-radius: 999px;
-        font-weight: 800;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-        border: 1px solid transparent;
-      }
-      .btn:hover {
-        transform: translateY(-2px);
-      }
-      .btn-primary {
-        background: linear-gradient(135deg, var(--rose-deep), #d98787);
-        color: #fff;
-        box-shadow: 0 16px 28px rgba(217, 135, 135, 0.23);
-      }
-      .btn-primary:hover { opacity: 0.96; }
-      .btn-secondary {
-        background: #fff;
-        color: var(--ink);
-        border-color: var(--line);
-      }
-      .btn-ghost {
-        background: transparent;
-        border-color: rgba(33, 22, 17, 0.22);
-      }
-
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(255, 250, 245, 0.82);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid rgba(234, 217, 202, 0.8);
-      }
-
-      .nav {
-        min-height: 78px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: clamp(1.7rem, 2vw, 2.3rem);
-        font-weight: 900;
-        letter-spacing: -0.08em;
-      }
-      .brand-mark {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--rose), var(--peach));
-        color: var(--dark);
-      }
+      button { font: inherit; }
+      .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 999px; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; border: 1px solid transparent; cursor: pointer; }
+      .btn:hover { transform: translateY(-2px); }
+      .btn-primary { background: linear-gradient(135deg, var(--rose-deep), #d98787); color: #fff; box-shadow: 0 16px 28px rgba(217, 135, 135, .23); }
+      .btn-primary:hover { opacity: .96; }
+      .btn-secondary { background: #fff; color: var(--ink); border-color: var(--line); }
+      header { position: sticky; top: 0; z-index: 20; background: rgba(255, 250, 245, .9); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(234, 217, 202, .8); }
+      .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .brand { display: flex; align-items: center; gap: 10px; font-size: clamp(1.7rem, 2vw, 2.3rem); font-weight: 900; letter-spacing: -.08em; }
+      .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--rose), var(--peach)); color: var(--dark); }
       .brand .accent { color: #d6948c; }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        font-weight: 700;
-        color: var(--muted);
-      }
-      .nav-links a:hover { opacity: 0.7; }
-
-      .hero {
-        background: radial-gradient(circle at top left, #fffdfb 0%, var(--bg-soft) 40%, #f8e4d7 100%);
-        padding: 72px 0 52px;
-      }
-
-      .hero-inner {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 40px;
-        align-items: center;
-      }
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255,255,255,0.6);
-        border: 1px solid var(--line);
-        color: var(--muted);
-        border-radius: 999px;
-        padding: 8px 14px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        margin-bottom: 18px;
-      }
-      .eyebrow-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--olive), var(--gold));
-      }
-
-      h1 {
-        font-size: clamp(2.7rem, 5vw, 4.8rem);
-        line-height: 0.96;
-        letter-spacing: -0.08em;
-        margin-bottom: 18px;
-      }
-      .hero-copy p {
-        max-width: 620px;
-        color: var(--muted);
-        font-size: 1.08rem;
-        margin-bottom: 28px;
-      }
-
-      .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 26px;
-      }
-
-      .social-proof {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 18px 28px;
-        color: var(--muted);
-        font-weight: 700;
-        font-size: 0.9rem;
-      }
-
-      .hero-visual {
-        background: rgba(255,255,255,0.52);
-        border: 1px solid rgba(234,217,202,0.8);
-        border-radius: 32px;
-        box-shadow: var(--shadow);
-        padding: 18px;
-      }
-      .mockup {
-        background: linear-gradient(135deg, #fffdfb 0%, #f9eddf 100%);
-        border-radius: 26px;
-        overflow: hidden;
-        border: 1px solid var(--line);
-      }
-      .mockup-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 18px;
-        background: rgba(255,255,255,0.7);
-        border-bottom: 1px solid var(--line);
-      }
-      .dots { display: flex; gap: 8px; }
-      .dots span {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: block;
-      }
-      .dots span:nth-child(1) { background: #f4c8ab; }
-      .dots span:nth-child(2) { background: #f1dd9c; }
-      .dots span:nth-child(3) { background: #c7d7b1; }
-      .mockup-body { padding: 20px; }
-      .mini-card {
-        background: rgba(255,255,255,0.8);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        padding: 18px;
-        margin-bottom: 16px;
-      }
-      .mini-card:last-child { margin-bottom: 0; }
-      .mini-tag {
-        display: inline-block;
-        padding: 6px 10px;
-        background: rgba(249, 214, 207, 0.7);
-        color: #94716d;
-        border-radius: 999px;
-        font-size: 0.7rem;
-        font-weight: 800;
-        margin-bottom: 12px;
-      }
-      .mini-card h3 {
-        font-size: 1.28rem;
-        letter-spacing: -0.04em;
-        margin-bottom: 6px;
-      }
-      .mini-card p {
-        font-size: 0.86rem;
-        color: var(--muted);
-        margin-bottom: 12px;
-      }
-      .mini-price {
-        font-weight: 900;
-        font-size: 1.5rem;
-      }
-
-      .section {
-        padding: 88px 0;
-      }
-
-      .section-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 18px;
-        margin-bottom: 26px;
-      }
-      h2 {
-        font-size: clamp(2.2rem, 3vw, 3rem);
-        letter-spacing: -0.06em;
-      }
-      .muted-link {
-        color: var(--muted);
-        font-weight: 700;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(180px, 1fr));
-        gap: 18px;
-      }
-      .stat {
-        background: rgba(255,255,255,0.7);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        padding: 24px 18px;
-      }
-      .stat strong {
-        display: block;
-        font-size: clamp(1.8rem, 3vw, 2.5rem);
-        letter-spacing: -0.06em;
-        margin-bottom: 8px;
-      }
-      .stat span {
-        color: var(--muted);
-      }
-
-      .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 24px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 10px 22px rgba(45, 32, 26, 0.02);
-      }
-      .card img {
-        width: 100%;
-        height: 210px;
-        object-fit: cover;
-        background: #f4efe9;
-      }
-      .card-body {
-        padding: 18px 18px 20px;
-      }
-      .tag {
-        display: inline-block;
-        padding: 6px 10px;
-        background: rgba(249,214,207,0.75);
-        color: #88615c;
-        border-radius: 999px;
-        font-size: 0.72rem;
-        font-weight: 800;
-        margin-bottom: 12px;
-      }
-      .card h3 {
-        font-size: 1.38rem;
-        letter-spacing: -0.04em;
-        margin-bottom: 8px;
-      }
-      .card p {
-        color: var(--muted);
-        font-size: 0.94rem;
-        margin-bottom: 18px;
-      }
-      .price-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-      .price {
-        font-size: 1.8rem;
-        font-weight: 900;
-        letter-spacing: -0.05em;
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-size: 0.72rem;
-        font-weight: 800;
-        color: #406143;
-        background: rgba(198, 224, 180, 0.7);
-      }
-      .card .btn {
-        width: 100%;
-      }
-
-      .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(220px, 1fr));
-        gap: 22px;
-      }
-      .feature {
-        background: rgba(255,255,255,0.7);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 26px 22px;
-      }
-      .feature-icon {
-        width: 52px;
-        height: 52px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 16px;
-        background: linear-gradient(135deg, var(--rose), #f7e5d2);
-        margin-bottom: 18px;
-        font-size: 1.5rem;
-      }
-      .feature h3 {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-      }
-      .feature p {
-        color: var(--muted);
-      }
-
-      .dark-panel {
-        background: linear-gradient(135deg, var(--dark), #392f2b);
-        color: #fff;
-        border-radius: 28px;
-        padding: clamp(24px, 4vw, 42px);
-        margin-top: 16px;
-      }
-      .dark-panel h2 {
-        color: #ffd9d1;
-        margin-bottom: 12px;
-      }
-      .dark-panel p {
-        color: rgba(255,255,255,0.82);
-        max-width: 720px;
-        margin-bottom: 22px;
-      }
-
-      .testimonials {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(220px, 1fr));
-        gap: 22px;
-      }
-      .quote {
-        background: rgba(255,255,255,0.7);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 26px 22px;
-      }
-      .quote strong {
-        display: block;
-        margin-bottom: 10px;
-      }
-      .quote p {
-        color: var(--muted);
-        margin-bottom: 18px;
-      }
-      .quote small {
-        color: var(--ink);
-        font-weight: 800;
-      }
-
-      .cta-box {
-        background: linear-gradient(135deg, #fffaf7, #fbe7dd);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        padding: clamp(22px, 4vw, 40px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-      }
-      .cta-box h3 {
-        font-size: clamp(1.6rem, 2vw, 2.3rem);
-        letter-spacing: -0.05em;
-        margin-bottom: 8px;
-      }
-      .cta-box p {
-        color: var(--muted);
-      }
-
-      footer {
-        padding: 28px 0 32px;
-        text-align: center;
-        color: #7d665d;
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 880px) {
-        .hero-inner,
-        .feature-grid,
-        .testimonials,
-        .stats-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .hero-inner { grid-template-columns: 1fr; }
-        .section-head,
-        .cta-box {
-          display: block;
-        }
-      }
-
-      @media (max-width: 620px) {
-        .nav {
-          flex-wrap: wrap;
-          justify-content: center;
-          padding: 12px 0;
-        }
-        .nav-links {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 12px 18px;
-        }
-        .cta-row {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .btn {
-          width: 100%;
-        }
-        .stats-grid,
-        .feature-grid,
-        .testimonials {
-          grid-template-columns: 1fr;
-        }
-      }
+      .nav-right, .nav-links { display: flex; align-items: center; gap: 24px; }
+      .nav-links { font-weight: 700; color: var(--muted); }
+      .nav-links a:hover { opacity: .7; }
+      .cart-trigger { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); font-weight: 800; cursor: pointer; }
+      .cart-count { display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px; background: var(--dark); color: #fff; font-size: .75rem; }
+      .hero { background: radial-gradient(circle at top left, #fffdfb 0%, var(--bg-soft) 40%, #f8e4d7 100%); padding: 72px 0 52px; }
+      .hero-inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.6); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 8px 14px; font-size: .8rem; font-weight: 700; margin-bottom: 18px; }
+      .eyebrow-dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--olive), var(--gold)); }
+      h1 { font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: .96; letter-spacing: -.08em; margin-bottom: 18px; }
+      .hero-copy p { max-width: 620px; color: var(--muted); font-size: 1.08rem; margin-bottom: 28px; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+      .social-proof { display: flex; flex-wrap: wrap; gap: 18px 28px; color: var(--muted); font-weight: 700; font-size: .9rem; }
+      .hero-visual { background: rgba(255,255,255,.52); border: 1px solid rgba(234,217,202,.8); border-radius: 32px; box-shadow: var(--shadow); padding: 18px; }
+      .mockup { background: linear-gradient(135deg, #fffdfb 0%, #f9eddf 100%); border-radius: 26px; overflow: hidden; border: 1px solid var(--line); }
+      .mockup-top { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; background: rgba(255,255,255,.7); border-bottom: 1px solid var(--line); }
+      .dots { display: flex; gap: 8px; }.dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+      .dots span:nth-child(1) { background: #f4c8ab; }.dots span:nth-child(2) { background: #f1dd9c; }.dots span:nth-child(3) { background: #c7d7b1; }
+      .mockup-body { padding: 20px; }.mini-card { background: rgba(255,255,255,.8); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-bottom: 16px; }.mini-card:last-child { margin-bottom: 0; }
+      .mini-tag { display: inline-block; padding: 6px 10px; background: rgba(249,214,207,.7); color: #94716d; border-radius: 999px; font-size: .7rem; font-weight: 800; margin-bottom: 12px; }
+      .mini-card h3 { font-size: 1.28rem; letter-spacing: -.04em; margin-bottom: 6px; }.mini-card p { font-size: .86rem; color: var(--muted); margin-bottom: 12px; }.mini-price { font-weight: 900; font-size: 1.5rem; }
+      .section { padding: 88px 0; }.section-head { display: flex; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 26px; }
+      h2 { font-size: clamp(2.2rem, 3vw, 3rem); letter-spacing: -.06em; }.muted-link { color: var(--muted); font-weight: 700; }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, minmax(180px, 1fr)); gap: 18px; }.stat { background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 20px; padding: 24px 18px; }.stat strong { display: block; font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -.06em; margin-bottom: 8px; }.stat span { color: var(--muted); }
+      .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 22px rgba(45,32,26,.02); }.card img { width: 100%; height: 210px; object-fit: cover; background: #f4efe9; }.card-body { padding: 18px 18px 20px; }
+      .tag { display: inline-block; padding: 6px 10px; background: rgba(249,214,207,.75); color: #88615c; border-radius: 999px; font-size: .72rem; font-weight: 800; margin-bottom: 12px; }.card h3 { font-size: 1.38rem; letter-spacing: -.04em; margin-bottom: 8px; }.card p { color: var(--muted); font-size: .94rem; margin-bottom: 18px; }
+      .price-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }.price { font-size: 1.8rem; font-weight: 900; letter-spacing: -.05em; }.badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: .72rem; font-weight: 800; color: #406143; background: rgba(198,224,180,.7); }.card .btn { width: 100%; }
+      .feature-grid, .testimonials { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 22px; }.feature, .quote { background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 22px; padding: 26px 22px; }.feature-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: linear-gradient(135deg, var(--rose), #f7e5d2); margin-bottom: 18px; font-size: 1.5rem; }.feature h3 { font-size: 1.2rem; margin-bottom: 8px; }.feature p, .quote p { color: var(--muted); }.dark-panel { background: linear-gradient(135deg, var(--dark), #392f2b); color: #fff; border-radius: 28px; padding: clamp(24px, 4vw, 42px); margin-top: 16px; }.dark-panel h2 { color: #ffd9d1; margin-bottom: 12px; }.dark-panel p { color: rgba(255,255,255,.82); max-width: 720px; margin-bottom: 22px; }.quote strong { display: block; margin-bottom: 10px; }.quote p { margin-bottom: 18px; }.quote small { color: var(--ink); font-weight: 800; }
+      .cta-box { background: linear-gradient(135deg, #fffaf7, #fbe7dd); border: 1px solid var(--line); border-radius: 28px; padding: clamp(22px, 4vw, 40px); display: flex; justify-content: space-between; align-items: center; gap: 16px; }.cta-box h3 { font-size: clamp(1.6rem, 2vw, 2.3rem); letter-spacing: -.05em; margin-bottom: 8px; }.cta-box p { color: var(--muted); }footer { padding: 28px 0 32px; text-align: center; color: #7d665d; font-size: .9rem; }
+      .cart-backdrop { position: fixed; inset: 0; z-index: 80; background: rgba(29,20,18,.45); opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s ease; }
+      .cart-backdrop.is-open { opacity: 1; visibility: visible; }
+      .cart-panel { position: fixed; z-index: 81; top: 0; right: 0; width: min(440px, 100%); height: 100dvh; padding: 24px; background: var(--bg); box-shadow: -16px 0 50px rgba(20,12,10,.16); display: flex; flex-direction: column; transform: translateX(102%); transition: transform .25s ease; }
+      .cart-panel.is-open { transform: translateX(0); }
+      .cart-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+      .cart-head h2 { font-size: 1.65rem; }.icon-btn { width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; background: white; cursor: pointer; font-size: 1.35rem; }
+      .cart-items { flex: 1; overflow-y: auto; padding: 10px 0; }.cart-empty { padding: 38px 10px; text-align: center; color: var(--muted); }.cart-empty p { margin: 8px 0 18px; }
+      .cart-item { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--line); }.cart-item h3 { font-size: 1rem; line-height: 1.3; }.cart-item-price { color: var(--muted); font-size: .9rem; margin-top: 4px; }.cart-item-actions { display: flex; align-items: center; gap: 8px; margin-top: 10px; }.qty-btn { width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; background: white; cursor: pointer; }.qty-value { min-width: 18px; text-align: center; font-weight: 800; }.remove-btn { margin-left: 8px; border: 0; background: transparent; color: #9c5e59; cursor: pointer; font-size: .85rem; text-decoration: underline; }
+      .cart-footer { padding-top: 18px; border-top: 1px solid var(--line); }.subtotal-row { display: flex; justify-content: space-between; font-weight: 900; font-size: 1.1rem; margin-bottom: 8px; }.cart-note { color: var(--muted); font-size: .83rem; margin-bottom: 14px; }.checkout-btn { width: 100%; }.cart-footer .continue-link { display: block; text-align: center; color: var(--muted); font-weight: 700; margin-top: 12px; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+      @media (max-width: 880px) { .hero-inner { grid-template-columns: 1fr; }.feature-grid, .testimonials, .stats-grid { grid-template-columns: 1fr 1fr; }.section-head, .cta-box { display: block; } }
+      @media (max-width: 620px) { .nav { flex-wrap: wrap; justify-content: center; padding: 12px 0; }.nav-right { flex-wrap: wrap; justify-content: center; gap: 12px; }.nav-links { flex-wrap: wrap; justify-content: center; gap: 12px 18px; }.cta-row { flex-direction: column; align-items: stretch; }.btn { width: 100%; }.stats-grid, .feature-grid, .testimonials { grid-template-columns: 1fr; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
     </style>
   </head>
   <body>
     <header>
       <div class="container nav">
-        <a href="#top" class="brand" aria-label="SteezSky home">
-          <span class="brand-mark">S</span>
-          Steez<span class="accent">Sky</span>
-        </a>
-
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="#shop">Shop</a>
-          <a href="#about">About</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <a href="#top" class="brand" aria-label="SteezSky home"><span class="brand-mark">S</span>Steez<span class="accent">Sky</span></a>
+        <div class="nav-right">
+          <nav class="nav-links" aria-label="Main navigation"><a href="#shop">Shop</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+          <button class="cart-trigger" id="open-cart" type="button" aria-haspopup="dialog" aria-controls="cart-panel" aria-expanded="false">Bag <span aria-hidden="true">🛍</span><span class="cart-count" id="cart-count">0</span></button>
+        </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="container hero-inner">
-          <div class="hero-copy">
-            <div class="eyebrow"><span class="eyebrow-dot"></span> Digital products for creators & small businesses</div>
-            <h1>Tools that make your routine feel lighter.</h1>
-            <p>
-              SteezSky creates clean, practical digital products designed to help you stay organized,
-              plan smarter, and build a life with more flow. From Notion systems to productivity planners,
-              every product is instant access and easy to use on any device.
-            </p>
-
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#shop">Explore the shop</a>
-              <a class="btn btn-secondary" href="#about">Learn more</a>
-            </div>
-
-            <div class="social-proof">
-              <span>Instant download</span>
-              <span>Minimal design</span>
-              <span>Creator-friendly</span>
-            </div>
-          </div>
-
-          <div class="hero-visual" aria-label="SteezSky product preview">
-            <div class="mockup">
-              <div class="mockup-top">
-                <div class="dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <strong>SteezSky</strong>
-              </div>
-
-              <div class="mockup-body">
-                <div class="mini-card">
-                  <span class="mini-tag">Notion • Productivity</span>
-                  <h3>Crunchy Parfait</h3>
-                  <p>Recipe page, planner, habits, and grocery list in one smart template.</p>
-                  <div class="mini-price">$9</div>
-                </div>
-
-                <div class="mini-card">
-                  <span class="mini-tag">Business • Operations</span>
-                  <h3>Food Biz OS</h3>
-                  <p>Menu, orders, content planning, inventory, and finance dashboard.</p>
-                  <div class="mini-price">$29</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section class="hero"><div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Digital products for creators &amp; small businesses</div>
+          <h1>Tools that make your routine feel lighter.</h1>
+          <p>SteezSky creates clean, practical digital products designed to help you stay organized, plan smarter, and build a life with more flow. From Notion systems to productivity planners, every product is instant access and easy to use on any device.</p>
+          <div class="cta-row"><a class="btn btn-primary" href="#shop">Explore the shop</a><a class="btn btn-secondary" href="#about">Learn more</a></div>
+          <div class="social-proof"><span>Instant download</span><span>Minimal design</span><span>Creator-friendly</span></div>
         </div>
-      </section>
+        <div class="hero-visual" aria-label="SteezSky product preview"><div class="mockup"><div class="mockup-top"><div class="dots"><span></span><span></span><span></span></div><strong>SteezSky</strong></div><div class="mockup-body">
+          <div class="mini-card"><span class="mini-tag">Notion • Productivity</span><h3>Crunchy Parfait</h3><p>Recipe page, planner, habits, and grocery list in one smart template.</p><div class="mini-price">$9</div></div>
+          <div class="mini-card"><span class="mini-tag">Business • Operations</span><h3>Food Biz OS</h3><p>Menu, orders, content planning, inventory, and finance dashboard.</p><div class="mini-price">$29</div></div>
+        </div></div></div>
+      </div></section>
 
-      <section class="section container" aria-label="SteezSky stats">
-        <div class="stats-grid">
-          <div class="stat">
-            <strong>1k+</strong>
-            <span>Digital downloads</span>
-          </div>
-          <div class="stat">
-            <strong>30+</strong>
-            <span>Ready-to-use templates</span>
-          </div>
-          <div class="stat">
-            <strong>4.9/5</strong>
-            <span>Customer satisfaction</span>
-          </div>
-          <div class="stat">
-            <strong>24/7</strong>
-            <span>Instant access support</span>
-          </div>
-        </div>
-      </section>
+      <section class="section container" aria-label="SteezSky stats"><div class="stats-grid">
+        <div class="stat"><strong>1k+</strong><span>Digital downloads</span></div><div class="stat"><strong>30+</strong><span>Ready-to-use templates</span></div><div class="stat"><strong>4.9/5</strong><span>Customer satisfaction</span></div><div class="stat"><strong>24/7</strong><span>Instant access support</span></div>
+      </div></section>
 
-      <section class="section container" id="shop">
-        <div class="section-head">
-          <h2>Best sellers</h2>
-          <a href="#contact" class="muted-link">Need a custom bundle? →</a>
-        </div>
-
+      <section class="section container" id="shop"><div class="section-head"><h2>Best sellers</h2><a href="#contact" class="muted-link">Need a custom bundle? →</a></div>
         <div class="products-grid">
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Crunchy Parfait digital product" />
-            <div class="card-body">
-              <span class="tag">Notion • Productivity</span>
-              <h3>Crunchy Parfait</h3>
-              <p>Recipe planner and lifestyle dashboard for healthier routines, practical meal planning, and a calmer week.</p>
-              <div class="price-row">
-                <div class="price">$9</div>
-                <span class="badge">Instant download</span>
-              </div>
-              <a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20want%20to%20buy%20the%20Crunchy%20Parfait%20template." target="_blank" rel="noreferrer">Buy now</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" alt="Food Biz OS digital product" />
-            <div class="card-body">
-              <span class="tag">Business • System</span>
-              <h3>Food Biz OS</h3>
-              <p>Run your food business in one workspace with menu management, orders, inventory, daily tasks, and finance tracking.</p>
-              <div class="price-row">
-                <div class="price">$29</div>
-                <span class="badge">Best value</span>
-              </div>
-              <a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20want%20to%20buy%20the%20Food%20Biz%20OS." target="_blank" rel="noreferrer">Buy now</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80" alt="Daily Planner digital product" />
-            <div class="card-body">
-              <span class="tag">Planner • PDF</span>
-              <h3>Daily Planner</h3>
-              <p>Simple, elegant daily planning system to structure your time, goals, priorities, and habits without overwhelm.</p>
-              <div class="price-row">
-                <div class="price">$7</div>
-                <span class="badge">Popular</span>
-              </div>
-              <a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20want%20to%20buy%20the%20Daily%20Planner." target="_blank" rel="noreferrer">Buy now</a>
-            </div>
-          </article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Crunchy Parfait digital product" /><div class="card-body"><span class="tag">Notion • Productivity</span><h3>Crunchy Parfait</h3><p>Recipe planner and lifestyle dashboard for healthier routines, practical meal planning, and a calmer week.</p><div class="price-row"><div class="price">$9</div><span class="badge">Instant download</span></div><button class="btn btn-primary add-to-cart" type="button" data-id="crunchy-parfait" data-name="Crunchy Parfait" data-price="9">Add to bag</button></div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Food Biz OS digital product" /><div class="card-body"><span class="tag">Business • System</span><h3>Food Biz OS</h3><p>Run your food business in one workspace with menu management, orders, inventory, daily tasks, and finance tracking.</p><div class="price-row"><div class="price">$29</div><span class="badge">Best value</span></div><button class="btn btn-primary add-to-cart" type="button" data-id="food-biz-os" data-name="Food Biz OS" data-price="29">Add to bag</button></div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Daily Planner digital product" /><div class="card-body"><span class="tag">Planner • PDF</span><h3>Daily Planner</h3><p>Simple, elegant daily planning system to structure your time, goals, priorities, and habits without overwhelm.</p><div class="price-row"><div class="price">$7</div><span class="badge">Popular</span></div><button class="btn btn-primary add-to-cart" type="button" data-id="daily-planner" data-name="Daily Planner" data-price="7">Add to bag</button></div></article>
         </div>
       </section>
 
-      <section class="section container" id="about">
-        <div class="dark-panel">
-          <h2>Why SteezSky</h2>
-          <p>
-            SteezSky is built for people who want better systems without the clutter. We create intentionally designed digital products that are easy to use, beautiful to look at, and practical enough to fit into your real world — whether you're planning a business, organizing your home life, or building a more focused routine.
-          </p>
-          <a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20want%20to%20learn%20more%20about%20your%20products." target="_blank" rel="noreferrer">Message us on WhatsApp</a>
-        </div>
-      </section>
+      <section class="section container" id="about"><div class="dark-panel"><h2>Why SteezSky</h2><p>SteezSky is built for people who want better systems without the clutter. We create intentionally designed digital products that are easy to use, beautiful to look at, and practical enough to fit into your real world — whether you're planning a business, organizing your home life, or building a more focused routine.</p><a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20want%20to%20learn%20more%20about%20your%20products." target="_blank" rel="noreferrer">Message us on WhatsApp</a></div></section>
 
-      <section class="section container" aria-label="SteezSky features">
-        <div class="section-head">
-          <h2>Built for everyday flow</h2>
-        </div>
+      <section class="section container" aria-label="SteezSky features"><div class="section-head"><h2>Built for everyday flow</h2></div><div class="feature-grid">
+        <article class="feature"><div class="feature-icon">⚡</div><h3>Fast &amp; easy</h3><p>Download instantly and use right away. No long setup, no confusing steps.</p></article><article class="feature"><div class="feature-icon">✨</div><h3>Clean design</h3><p>Minimal layouts with a premium aesthetic that make staying organized feel more enjoyable.</p></article><article class="feature"><div class="feature-icon">📦</div><h3>Practical tools</h3><p>Every product is created for real routines, businesses, and goals you can actually stick to.</p></article>
+      </div></section>
 
-        <div class="feature-grid">
-          <article class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Fast & easy</h3>
-            <p>Download instantly and use right away. No long setup, no confusing steps.</p>
-          </article>
+      <section class="section container" id="reviews"><div class="section-head"><h2>Loved by customers</h2></div><div class="testimonials">
+        <article class="quote"><strong>“So useful.”</strong><p>The planner is simple, aesthetic, and honestly made my week so much easier to manage.</p><small>— Ada</small></article><article class="quote"><strong>“Worth it.”</strong><p>Food Biz OS helped me organize my business in a way that actually felt doable.</p><small>— Tobi</small></article><article class="quote"><strong>“Beautiful &amp; functional.”</strong><p>Everything feels premium, but it’s also so practical. I use it every single day.</p><small>— Chika</small></article>
+      </div></section>
 
-          <article class="feature">
-            <div class="feature-icon">✨</div>
-            <h3>Clean design</h3>
-            <p>Minimal layouts with a premium aesthetic that make staying organized feel more enjoyable.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon">📦</div>
-            <h3>Practical tools</h3>
-            <p>Every product is created for real routines, businesses, and goals you can actually stick to.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section container" id="reviews">
-        <div class="section-head">
-          <h2>Loved by customers</h2>
-        </div>
-
-        <div class="testimonials">
-          <article class="quote">
-            <strong>“So useful.”</strong>
-            <p>The planner is simple, aesthetic, and honestly made my week so much easier to manage.</p>
-            <small>— Ada</small>
-          </article>
-
-          <article class="quote">
-            <strong>“Worth it.”</strong>
-            <p>Food Biz OS helped me organize my business in a way that actually felt doable.</p>
-            <small>— Tobi</small>
-          </article>
-
-          <article class="quote">
-            <strong>“Beautiful & functional.”</strong>
-            <p>Everything feels premium, but it’s also so practical. I use it every single day.</p>
-            <small>— Chika</small>
-          </article>
-        </div>
-      </section>
-
-      <section class="section container" id="contact">
-        <div class="cta-box">
-          <div>
-            <h3>Need help choosing a product?</h3>
-            <p>Message SteezSky and we’ll help you pick the best fit for your routine or business.</p>
-          </div>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20need%20help%20choosing%20a%20product." target="_blank" rel="noreferrer">Chat on WhatsApp</a>
-            <a class="btn btn-secondary" href="mailto:hello@steezsky.com">Email us</a>
-          </div>
-        </div>
-      </section>
+      <section class="section container" id="contact"><div class="cta-box"><div><h3>Need help choosing a product?</h3><p>Message SteezSky and we’ll help you pick the best fit for your routine or business.</p></div><div class="cta-row"><a class="btn btn-primary" href="https://wa.me/2348064996690?text=Hi%20SteezSky%2C%20I%20need%20help%20choosing%20a%20product." target="_blank" rel="noreferrer">Chat on WhatsApp</a><a class="btn btn-secondary" href="mailto:hello@steezsky.com">Email us</a></div></div></section>
     </main>
 
-    <footer>
-      © <span id="year"></span> SteezSky • Practical digital products for a smoother life.
-    </footer>
+    <div class="cart-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+    <aside class="cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" inert>
+      <div class="cart-head"><h2 id="cart-title">Your bag</h2><button class="icon-btn" id="close-cart" type="button" aria-label="Close shopping bag">×</button></div>
+      <div class="cart-items" id="cart-items" aria-live="polite"></div>
+      <div class="cart-footer"><div class="subtotal-row"><span>Subtotal</span><span id="cart-subtotal">$0</span></div><p class="cart-note">Digital products are delivered after your order is confirmed. Shipping is not required.</p><a class="btn btn-primary checkout-btn" id="checkout" href="https://wa.me/2348064996690" target="_blank" rel="noreferrer">Continue to WhatsApp checkout</a><a class="continue-link" href="#shop" id="continue-shopping">Continue shopping</a></div>
+    </aside>
+    <div class="sr-only" id="cart-status" role="status" aria-live="polite"></div>
 
+    <footer>© <span id="year"></span> SteezSky • Practical digital products for a smoother life.</footer>
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+      (() => {
+        const whatsappNumber = '2348064996690';
+        const cartKey = 'steezsky-cart-v1';
+        const panel = document.getElementById('cart-panel');
+        const backdrop = document.getElementById('cart-backdrop');
+        const openButton = document.getElementById('open-cart');
+        const closeButton = document.getElementById('close-cart');
+        const itemsNode = document.getElementById('cart-items');
+        const countNode = document.getElementById('cart-count');
+        const subtotalNode = document.getElementById('cart-subtotal');
+        const checkoutLink = document.getElementById('checkout');
+        const statusNode = document.getElementById('cart-status');
+        let lastFocus = null;
+        let cart = readCart();
+
+        function readCart() {
+          try {
+            const parsed = JSON.parse(localStorage.getItem(cartKey) || '[]');
+            if (!Array.isArray(parsed)) return [];
+            return parsed.filter(item => item && typeof item.id === 'string' && typeof item.name === 'string' && Number.isFinite(item.price) && Number.isInteger(item.quantity) && item.quantity > 0);
+          } catch { return []; }
+        }
+        function saveCart() {
+          try { localStorage.setItem(cartKey, JSON.stringify(cart)); } catch { /* Cart still works for this visit if storage is unavailable. */ }
+        }
+        function money(value) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(value); }
+        function renderCart() {
+          const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+          const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+          countNode.textContent = String(count);
+          subtotalNode.textContent = money(subtotal);
+          if (!cart.length) {
+            itemsNode.innerHTML = '<div class="cart-empty"><strong>Your bag is taking a breather.</strong><p>Add a digital product and it will appear here.</p><a class="btn btn-secondary" href="#shop" id="empty-shop-link">Browse products</a></div>';
+            checkoutLink.setAttribute('aria-disabled', 'true');
+            checkoutLink.style.opacity = '.55';
+            checkoutLink.style.pointerEvents = 'none';
+          } else {
+            itemsNode.innerHTML = cart.map(item => `<article class="cart-item"><div><h3>${escapeHTML(item.name)}</h3><div class="cart-item-price">${money(item.price)} each</div><div class="cart-item-actions"><button class="qty-btn" type="button" data-action="decrease" data-id="${escapeHTML(item.id)}" aria-label="Decrease ${escapeHTML(item.name)} quantity">−</button><span class="qty-value" aria-label="Quantity">${item.quantity}</span><button class="qty-btn" type="button" data-action="increase" data-id="${escapeHTML(item.id)}" aria-label="Increase ${escapeHTML(item.name)} quantity">+</button><button class="remove-btn" type="button" data-action="remove" data-id="${escapeHTML(item.id)}">Remove</button></div></div><strong>${money(item.price * item.quantity)}</strong></article>`).join('');
+            checkoutLink.removeAttribute('aria-disabled');
+            checkoutLink.style.opacity = '';
+            checkoutLink.style.pointerEvents = '';
+          }
+          const orderLines = cart.map(item => `• ${item.name} × ${item.quantity} — ${money(item.price * item.quantity)}`);
+          const message = `Hi SteezSky! I'd like to order:\n${orderLines.join('\n')}\n\nSubtotal: ${money(subtotal)}\nPlease send me the payment and delivery details.`;
+          checkoutLink.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+          saveCart();
+        }
+        function escapeHTML(value) {
+          return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+        }
+        function showCart() {
+          lastFocus = document.activeElement;
+          panel.inert = false;
+          panel.setAttribute('aria-hidden', 'false');
+          panel.classList.add('is-open');
+          backdrop.classList.add('is-open');
+          document.body.classList.add('cart-open');
+          openButton.setAttribute('aria-expanded', 'true');
+          closeButton.focus();
+        }
+        function hideCart() {
+          panel.classList.remove('is-open');
+          backdrop.classList.remove('is-open');
+          document.body.classList.remove('cart-open');
+          panel.setAttribute('aria-hidden', 'true');
+          panel.inert = true;
+          openButton.setAttribute('aria-expanded', 'false');
+          if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        }
+        document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
+          const id = button.dataset.id;
+          const existing = cart.find(item => item.id === id);
+          if (existing) existing.quantity += 1;
+          else cart.push({ id, name: button.dataset.name, price: Number(button.dataset.price), quantity: 1 });
+          renderCart();
+          statusNode.textContent = `${button.dataset.name} added to your bag.`;
+          showCart();
+        }));
+        itemsNode.addEventListener('click', event => {
+          const button = event.target.closest('button[data-action]');
+          if (!button) return;
+          const item = cart.find(entry => entry.id === button.dataset.id);
+          if (!item) return;
+          if (button.dataset.action === 'increase') item.quantity += 1;
+          if (button.dataset.action === 'decrease') item.quantity -= 1;
+          if (button.dataset.action === 'remove' || item.quantity <= 0) cart = cart.filter(entry => entry.id !== item.id);
+          renderCart();
+        });
+        openButton.addEventListener('click', showCart);
+        closeButton.addEventListener('click', hideCart);
+        backdrop.addEventListener('click', hideCart);
+        document.getElementById('continue-shopping').addEventListener('click', hideCart);
+        itemsNode.addEventListener('click', event => { if (event.target.id === 'empty-shop-link') hideCart(); });
+        document.addEventListener('keydown', event => {
+          if (!panel.classList.contains('is-open')) return;
+          if (event.key === 'Escape') hideCart();
+          if (event.key === 'Tab') {
+            const focusable = [...panel.querySelectorAll('a[href], button:not([disabled])')];
+            const first = focusable[0]; const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+          }
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+        renderCart();
+      })();
     </script>
   </body>
 </html>
